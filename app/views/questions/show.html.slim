@@ -1,0 +1,17 @@
+= link_to 'Home', root_path
+br
+= link_to 'Questions', questions_path
+
+h2 Question
+= @question.content
+
+h2 Answers
+
+ul#answers
+  = render partial: 'answer', collection: @question.answers
+
+= form_for @question.answers.new do |f|
+  = f.hidden_field :question_id
+  = f.text_field :content
+  br
+  = f.submit
